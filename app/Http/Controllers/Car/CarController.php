@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Car;
 
 use App\Http\Requests\Car\StoreRequest;
 use App\Http\Requests\Car\UpdateRequest;
 use App\Models\Car;
 use App\Models\Mark;
 
-class CarController extends Controller
+class CarController extends BaseController
 {
     public function index()
     {
@@ -25,7 +25,9 @@ class CarController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
-        Car::create($data);
+
+        $this->service->store($data);
+
         return redirect()->route('cars.index');
     }
 
@@ -44,7 +46,9 @@ class CarController extends Controller
     public function update(UpdateRequest $request, Car $car)
     {
         $data = $request->validated();
-        $car->update($data);
+
+        $this->service->update($car, $data);
+
         return redirect()->route('cars.show', compact('car'));
     }
 
