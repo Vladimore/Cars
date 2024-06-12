@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CarRequest;
 use App\Models\Car;
 use App\Models\Mark;
-use Illuminate\Http\Request;
 
 class CarController extends Controller
 {
@@ -21,16 +21,9 @@ class CarController extends Controller
         return view('car.create', compact('marks'));
     }
 
-    public function store()
+    public function store(CarRequest $request)
     {
-        $data = request()->validate([
-            'mark_id' => 'integer',
-            'model' => 'required|string',
-            'description' => 'string',
-            'year' => 'required|integer',
-            'price' => 'required|integer',
-            'image' => 'string'
-        ]);
+        $data = $request->validated();
         Car::create($data);
         return redirect()->route('cars.index');
     }
@@ -47,16 +40,9 @@ class CarController extends Controller
         return view('car.edit', compact('car', 'marks'));
     }
 
-    public function update(Car $car)
+    public function update(CarRequest $request, Car $car)
     {
-        $data = request()->validate([
-           'mark_id' => 'integer',
-           'model' => 'string',
-           'description' => 'string',
-           'year' => 'integer',
-           'price' => 'integer',
-           'image' => 'string'
-        ]);
+        $data = $request->validated();
         $car->update($data);
         return redirect()->route('cars.show', compact('car'));
     }
