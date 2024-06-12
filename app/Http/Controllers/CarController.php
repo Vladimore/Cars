@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CarRequest;
+use App\Http\Requests\Car\StoreRequest;
+use App\Http\Requests\Car\UpdateRequest;
 use App\Models\Car;
 use App\Models\Mark;
 
@@ -21,7 +22,7 @@ class CarController extends Controller
         return view('car.create', compact('marks'));
     }
 
-    public function store(CarRequest $request)
+    public function store(StoreRequest $request)
     {
         $data = $request->validated();
         Car::create($data);
@@ -40,7 +41,7 @@ class CarController extends Controller
         return view('car.edit', compact('car', 'marks'));
     }
 
-    public function update(CarRequest $request, Car $car)
+    public function update(UpdateRequest $request, Car $car)
     {
         $data = $request->validated();
         $car->update($data);
