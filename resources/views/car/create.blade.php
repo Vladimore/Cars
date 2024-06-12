@@ -18,12 +18,19 @@
     <form action="{{route('cars.store')}}" method="POST">
         @csrf
         <div class="mb-3">
-            <label for="mark" class="form-label">Mark</label>
-            <input type="text" class="form-control" id="mark" name="mark">
+            <label for="mark_id" class="form-label">Mark</label>
+            <select class="form-select" aria-label="mark_id" name="mark_id">
+                @foreach($marks as $mark)
+                    <option value="{{$mark->id}}">{{$mark->title}}</option>
+                @endforeach
+            </select>
         </div>
         <div class="mb-3">
             <label for="model" class="form-label">Model</label>
-            <input type="text" class="form-control" id="model" name="model">
+            <input type="text" class="form-control" id="model" name="model" value="{{old('model')}}">
+            @error('model')
+                <p class="text-danger">{{$message}}</p>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
@@ -31,11 +38,17 @@
         </div>
         <div class="mb-3">
             <label for="year" class="form-label">Year</label>
-            <input type="number" class="form-control" id="year" name="year">
+            <input type="number" class="form-control" id="year" name="year" value="{{old('year')}}">
+            @error('year')
+            <p class="text-danger">{{$message}}</p>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>
-            <input type="number" class="form-control" id="price" name="price">
+            <input type="number" class="form-control" id="price" name="price" value="{{old('price')}}">
+            @error('price')
+            <p class="text-danger">{{$message}}</p>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Image</label>

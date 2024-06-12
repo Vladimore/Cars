@@ -19,8 +19,14 @@
         @csrf
         @method('patch')
         <div class="mb-3">
-            <label for="mark" class="form-label">Mark</label>
-            <input type="text" class="form-control" id="mark" name="mark" value="{{$car->mark}}">
+            <label for="mark_id" class="form-label">Mark</label>
+            <select class="form-select" aria-label="mark_id" name="mark_id">
+                @foreach($marks as $mark)
+                    <option
+                        {{$mark->id === $car->mark_id ? 'selected' : ''}}
+                        value="{{$mark->id}}">{{$mark->title}}</option>
+                @endforeach
+            </select>
         </div>
         <div class="mb-3">
             <label for="model" class="form-label">Model</label>

@@ -18,7 +18,10 @@
 <div class="p-3">
     <div class="border border-3">
     <div class="d-flex justify-content-center">
-        <h2>{{$car->mark}} {{$car->model}} / {{$car->year}} - {{$car->price}} р.</h2>
+        <h2>@foreach($marks as $mark)
+                {{$mark->id === $car->mark_id ? $mark->title : ''}}
+            @endforeach
+            {{$car->model}} / {{$car->year}} - {{$car->price}} р.</h2>
     </div>
     <div class="d-flex justify-content-center">
         <img src="{{$car->image}}" class="img-thumbnail" alt="image">

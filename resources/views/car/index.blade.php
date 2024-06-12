@@ -20,7 +20,10 @@
                     <a href="{{route('cars.show', $car->id)}} "
                        class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2"
                        style="--bs-focus-ring-color: rgba(var(--bs-success-rgb), .25)">
-                        {{$car->mark}} {{$car->model}} </a>
+                        @foreach($marks as $mark)
+                            {{$mark->id === $car->mark_id ? $mark->title : ''}}
+                        @endforeach
+                        {{$car->model}} </a>
 
                     <div class="p-2">
                         <img src="{{$car->image}}" height="200" alt="image">
