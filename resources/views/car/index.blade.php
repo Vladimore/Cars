@@ -16,7 +16,7 @@
     <div class="container text-start">
         <div class="row">
             @foreach($cars as $car)
-                <div class="col">
+                <div class="col-lg-4">
                     <a href="{{route('cars.show', $car->id)}} "
                        class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2"
                        style="--bs-focus-ring-color: rgba(var(--bs-success-rgb), .25)">
@@ -32,6 +32,7 @@
             @endforeach
         </div>
     </div>
+    {{$cars->links()}}
 </div>
 </body>
 </html>
