@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Car;
 
+use App\Http\Filters\CarFilter;
+use App\Http\Requests\Car\FilterRequest;
 use App\Http\Requests\Car\StoreRequest;
 use App\Http\Requests\Car\UpdateRequest;
 use App\Models\Car;
@@ -9,11 +11,20 @@ use App\Models\Mark;
 
 class CarController extends BaseController
 {
-    public function index()
+    public function index(FilterRequest $request)
     {
         $cars = Car::paginate(10);
         $marks = Mark::all();
         return view('car.index', compact('cars', 'marks'));
+    }
+
+    public function search(FilterRequest $request)
+    {
+        $marks = Mark::all();
+        $data = $request->validated();
+        $filter = app()->make(CarFilter::class, ['queryParams' => array_filter($data)]);
+        $cars = Car::filter($filter)->paginate(10);
+        dd($cars);
     }
 
     public function create()
