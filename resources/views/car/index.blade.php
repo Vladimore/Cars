@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <div class="p-3">
-    <a href="{{route('cars.create')}}" class="btn btn-success">Add</a>
+    <a href="{{route('cars.create')}}" class="btn btn-info">Add</a>
 </div>
 <div class="p-3">
     <div class="container text-start">

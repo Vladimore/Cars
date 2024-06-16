@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
     <!-- Preloader -->
