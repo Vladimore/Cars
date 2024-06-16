@@ -33,7 +33,7 @@
                         <input class="form-control me-2" type="search" name="description" id="description">
                     </div>
                     <div class="m-4">
-                        <button class="btn btn-outline-info" type="submit">
+                        <button class="btn btn-outline-info" style="height: 50px; width: 50px" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
