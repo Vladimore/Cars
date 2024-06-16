@@ -9,6 +9,9 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+
+@include('car.search')
+
 <div class="p-3">
     <a href="{{route('cars.create')}}" class="btn btn-success">Add</a>
 </div>
@@ -32,7 +35,7 @@
             @endforeach
         </div>
     </div>
-    {{$cars->links()}}
+    {{$cars->withQueryString()->links()}}
 </div>
 </body>
 </html>

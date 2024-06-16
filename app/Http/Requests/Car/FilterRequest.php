@@ -23,10 +23,10 @@ class FilterRequest extends FormRequest
     {
         return [
             'mark_id' => 'integer',
-            'model' => 'string',
-            'description' => 'string',
-            'year' => 'integer',
-            'price' => 'integer'
+            'model' => 'string|nullable',
+            'description' => 'string|nullable',
+            'year' => 'integer|nullable',
+            'price' => 'integer|nullable'
         ];
     }
 }
