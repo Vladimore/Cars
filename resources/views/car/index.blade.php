@@ -17,7 +17,7 @@
                         {{$car->model}} </a>
 
                     <div class="p-2">
-                        <img src="{{$car->image}}" height="200" alt="image">
+                        <img src="{{$car->image}}" height="200" alt="image car" class="border-0 rounded">
                     </div>
                 </div>
             @endforeach
