@@ -3,9 +3,9 @@
         <search role="search">
             <form class="d-flex text-center row-cols-md-4" action="{{route('cars.search')}}" method="GET">
                 <div>
-                    <label for="mark">Model</label>
+                    <label for="mark">Mark</label>
                     <select class="form-select" aria-label="mark_id" name="mark_id">
-                        <option disabled selected>Model</option>
+                        <option disabled selected ></option>
                         @foreach($marks as $mark)
                             <option
                                 value="{{$mark->id}}">{{$mark->title}}</option>
@@ -14,19 +14,19 @@
                 </div>
                 <div>
                     <label for="model">Model</label>
-                    <input class="form-control me-2" type="search" placeholder="x5" name="model" id="model">
+                    <input class="form-control me-2" type="search" name="model" id="model" >
                 </div>
                 <div>
                     <label for="year">Year</label>
-                    <input class="form-control me-2" type="search" placeholder="2024" name="year" id="year">
+                    <input class="form-control me-2" type="search"  name="year" id="year">
                 </div>
                 <div>
                     <label for="price">Price, less than:</label>
-                    <input class="form-control me-2" type="search" placeholder="100000" name="price" id="price">
+                    <input class="form-control me-2" type="search" name="price" id="price">
                 </div>
                 <div>
                     <label for="description">Description part</label>
-                    <input class="form-control me-2" type="search" placeholder="car" name="description" id="description">
+                    <input class="form-control me-2" type="search" name="description" id="description">
                 </div>
                 <div class="m-3">
                     <button class="btn btn-outline-success" type="submit">Search</button>
