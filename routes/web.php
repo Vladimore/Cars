@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Car\IndexController;
 use App\Http\Controllers\Car\CarController;
 use App\Http\Controllers\Car\SearchController;
 use Illuminate\Support\Facades\Route;
@@ -7,6 +8,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 
+});
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function (){
+    Route::group(['namespace' => 'Car'], function (){
+        Route::get('/cars', [IndexController::class, 'index'], []);
+    });
 });
 
 Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
