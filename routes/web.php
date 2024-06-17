@@ -10,7 +10,7 @@ Route::get('/', [CarController::class, 'index']);
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function (){
     Route::group(['namespace' => 'Car'], function (){
-        Route::get('/cars', [IndexController::class, 'index'], []);
+        Route::get('/cars', [IndexController::class, 'index']);
     });
 });
 
