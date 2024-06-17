@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Car\IndexController;
 use App\Http\Controllers\Car\CarController;
 use App\Http\Controllers\Car\SearchController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,3 +26,7 @@ Route::patch('/cars/{car}', [CarController::class, 'update'])->name('cars.update
 Route::delete('/cars/{car}', [CarController::class, 'destroy'])->name('cars.delete');
 
 Route::get('/cars-search', [SearchController::class, 'search'])->name('cars.search');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
