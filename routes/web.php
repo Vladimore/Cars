@@ -13,7 +13,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function (){
     Route::group(['namespace' => 'Car'], function (){
         Route::get('/cars', [IndexController::class, 'index']);
     });
-})->middleware(AdminPanelMiddleware::class);
+})->middleware('admin');
 
 Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
 Route::get('/cars/create', [CarController::class, 'create'])->name('cars.create');

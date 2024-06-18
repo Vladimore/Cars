@@ -15,7 +15,11 @@ class AdminPanelMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->user() !== 'admin')
+        if(!isset($request->user()->role))
+        {
+            return redirect()->route('login');
+        }
+        else if ($request->user()->role !== 'admin')
         {
             return redirect()->route('cars.index');
         }
