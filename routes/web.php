@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Car\IndexController;
 use App\Http\Controllers\Car\CarController;
 use App\Http\Controllers\Car\SearchController;
+use App\Http\Middleware\AdminPanelMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -12,7 +13,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function (){
     Route::group(['namespace' => 'Car'], function (){
         Route::get('/cars', [IndexController::class, 'index']);
     });
-});
+})->middleware(AdminPanelMiddleware::class);
 
 Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
 Route::get('/cars/create', [CarController::class, 'create'])->name('cars.create');
