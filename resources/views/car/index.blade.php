@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.user')
 @section('content')
 <div class="p-3">
     <a href="{{route('cars.create')}}" class="btn btn-info">Add</a>
