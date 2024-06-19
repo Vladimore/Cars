@@ -11,7 +11,9 @@ Route::get('/', [CarController::class, 'index']);
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function (){
     Route::group(['namespace' => 'Car'], function (){
-        Route::get('/cars', [IndexController::class, 'index'])->middleware('admin');
+        Route::get('/cars', [IndexController::class, 'index'])
+            ->middleware('admin')
+            ->name('admin.cars.index');
     });
 });
 

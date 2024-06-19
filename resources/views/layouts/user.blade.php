@@ -18,6 +18,9 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+<div class="">
+    @include('user.car.navbar')
+</div>
 <div class="wrapper">
 
     <!-- Preloader -->
