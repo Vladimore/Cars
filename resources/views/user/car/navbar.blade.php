@@ -4,9 +4,11 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{{route('cars.index')}}" class="nav-link">Home</a>
         </li>
+        @can('view', auth()->user())
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{{route('admin.cars.index')}}" class="nav-link">Admin</a>
         </li>
+        @endcan
     </ul>
 
 
