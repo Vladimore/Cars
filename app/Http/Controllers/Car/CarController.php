@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Car;
 
 use App\Http\Requests\Car\StoreRequest;
 use App\Http\Requests\Car\UpdateRequest;
+use App\Http\Resources\Car\CarResource;
 use App\Models\Car;
 use App\Models\Mark;
 
@@ -13,7 +14,8 @@ class CarController extends BaseController
     {
         $cars = Car::paginate(5);
         $marks = Mark::all();
-        return view('car.index', compact('cars', 'marks'));
+        return CarResource::collection($cars);
+//        return view('car.index', compact('cars', 'marks'));
     }
 
     public function create()
@@ -26,9 +28,10 @@ class CarController extends BaseController
     {
         $data = $request->validated();
 
-        $this->service->store($data);
+        $cars = $this->service->store($data);
 
-        return redirect()->route('cars.index');
+        return new CarResource($cars);
+//        return redirect()->route('cars.index');
     }
 
     public function show(Car $car)

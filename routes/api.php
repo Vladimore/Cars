@@ -23,5 +23,6 @@ Route::group([
 
 });
 Route::group(['namespace' => 'Car'], function () {
-    Route::get('/cars', [CarController::class, 'index']);
+    Route::get('/cars', [CarController::class, 'index'])->middleware('jwt.auth');
+    Route::post('/cars', [CarController::class, 'store'])->middleware('jwt.auth');
 });
