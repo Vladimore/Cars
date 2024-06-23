@@ -14,5 +14,6 @@ class Service
     public function update($car, $data)
     {
         $car->update($data);
+        return $car->fresh();
     }
 }

@@ -15,7 +15,10 @@ class CarResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this->id,
+            'mark_id' => $this->mark_id,
             'model' => $this->model,
+            'description' => $this->description,
             'year' => $this->year,
             'price' => $this->price
         ];

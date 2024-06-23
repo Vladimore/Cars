@@ -37,7 +37,8 @@ class CarController extends BaseController
     public function show(Car $car)
     {
         $marks = Mark::all();
-        return view('car.show', compact('car', 'marks'));
+        return new CarResource($car);
+//        return view('car.show', compact('car', 'marks'));
     }
 
     public function edit(Car $car)
@@ -50,9 +51,9 @@ class CarController extends BaseController
     {
         $data = $request->validated();
 
-        $this->service->update($car, $data);
-
-        return redirect()->route('cars.show', compact('car'));
+        $cars = $this->service->update($car, $data);
+        return new CarResource($cars);
+//        return redirect()->route('cars.show', compact('car'));
     }
 
     public function destroy(Car $car)
