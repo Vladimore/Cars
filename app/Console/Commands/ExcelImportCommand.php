@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Imports\CarImport;
 use Illuminate\Console\Command;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ExcelImportCommand extends Command
 {
@@ -25,6 +27,6 @@ class ExcelImportCommand extends Command
      */
     public function handle()
     {
-        //
+        Excel::import(new CarImport(), public_path('excel/cars.xlsx'));
     }
 }
